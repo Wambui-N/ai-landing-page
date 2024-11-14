@@ -1,12 +1,16 @@
-import React from 'react'
-import WordMark from './WordMark'
+import React from "react";
+import NavBar from "./NavBar";
+import { createClient } from "@/prismicio";
 
-const Header = () => {
+const Header = async () => {
+  const client = createClient();
+  const settings = await client.getSingle("settings");
+
   return (
-    <div>
-        <WordMark />
-    </div>
-  )
-}
+    <header>
+      <NavBar settings={settings} />
+    </header>
+  );
+};
 
-export default Header
+export default Header;
